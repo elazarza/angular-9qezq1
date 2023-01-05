@@ -1,0 +1,24 @@
+<div #contenedor class="categories" cdkDropListGroup> 
+	<ng-container *ngFor="let item of items;let i=index">
+	<div class="categories-item-wide" cdkDropList 
+  *ngIf="item === 3; else other"
+    cdkDropListOrientation="horizontal"
+    [cdkDropListData]="{item:item,index:i}" (cdkDropListDropped)="drop($event)" >
+			<div class="inner"  cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        {{item}}
+        </div>
+		</div>
+<ng-template #other>
+		<div class="categories-item" cdkDropList 
+    cdkDropListOrientation="horizontal"
+    [cdkDropListData]="{item:item,index:i}" (cdkDropListDropped)="drop($event)" >
+			<div class="inner"  cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        {{item}}
+        </div>
+		</div>
+  </ng-template>
+	</ng-container>
+</div>
+{{items|json}}
